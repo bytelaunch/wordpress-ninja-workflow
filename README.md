@@ -5,7 +5,7 @@ wordpress-ninja-workflow
 
 In your terminal:
 ```shell
-$ git clone https://github.com/bytelaunch/wordpress-ninja-workflow .
+$ wget https://raw.githubusercontent.com/bytelaunch/wordpress-ninja-workflow/master/wp-ninja.sh
 
 $ chmod +x wp-ninja.sh
 
