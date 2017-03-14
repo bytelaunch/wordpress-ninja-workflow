@@ -7,18 +7,18 @@ In your terminal:
 ```shell
 $ git clone https://github.com/bytelaunch/wordpress-ninja-workflow .
 
-$ chmod +x wp-setup.sh
+$ chmod +x wp-ninja.sh
 
-$ mv wp-setup.sh /usr/local/bin/wp-setup
+$ mv wp-ninja.sh /usr/local/bin/wp-ninja
 ```
 
 ## Usage
 
 Using the template provided, create a configuration file for your specific WordPress settings.
 ```shell
-# wp-setup {config_file} {wwwroot}
+# wp-ninja {config_file} {wwwroot}
 
-$ wp-setup site.conf public_html/
+$ wp-ninja site.conf public_html/
 ```
 
 # Requirements
