@@ -92,6 +92,6 @@ comment
 
 comment
 comment "# Fetch db from source"
-do_command "wp migratedb pull $migratedb_pull wp migratedb pull https://www.americanadvocacygroup.com hrc9clp1f9UcKSGAIXmJlqyylEtHpIFXRJcTunHH --find=$migratedb_find --replace=$migratedb_replace $migratedb_flags"
+do_command "wp migratedb pull $migratedb_pull --find=$migratedb_find --replace=$migratedb_replace $migratedb_flags"
 comment
 
