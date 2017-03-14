@@ -97,7 +97,7 @@ wp plugin install \
 composer install
 
 # Activate migration plugins
-wp plugin activate wp-migrate-db-pro wp-migrate-db-pro-media-files wp-migrate-db-pro-cli 
+wp plugin activate wp-migrate-db-pro wp-migrate-db-pro-media-files wp-migrate-db-pro-cli
 
 # Update License
 wp migratedb setting update license {lic-ense-key-goes-here}
@@ -105,11 +105,8 @@ wp migratedb setting update license {lic-ense-key-goes-here}
 # fetch db from live
 wp migratedb pull \
     https://www.mywaterpledge.com {pull-authorization-key} \
-    --find=//www.mywaterpledge.com \
-    --replace=//mywaterpledge.staging.bigideas.io \
+    --find=//www.site.com \
+    --replace=//dev.site.com \
     --skip-replace-guids \
     --preserve-active-plugins \
 ```
-
-
-
