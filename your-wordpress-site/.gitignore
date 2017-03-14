@@ -1,0 +1,75 @@
+# Ignore everything in the root except the "wp-content" directory.
+/*
+!composer.json
+!.gitignore
+!.htaccess
+!.htaccess.updates
+!wp-content/
+
+# Ignore everything in the "wp-content" directory, except the "plugins" and "themes" directories.
+wp-content/*
+!wp-content/themes/
+!wp-content/plugins/
+
+# Ignore everything in the "themes" directory, except the themes you specify
+wp-content/themes/*
+!wp-content/themes/my-awesome-theme/
+
+# Ignore everything in the "plugins" directory, except the plugins you specify
+wp-content/plugins/*
+# !wp-content/plugins/my-single-file-plugin.php
+# !wp-content/plugins/my-directory-plugin/
+!wp-content/plugins/acf-repeater/
+!wp-content/plugins/acf-flexible-content/
+!wp-content/plugins/advanced-custom-fields-pro/
+!wp-content/plugins/amazon-s3-and-cloudfront-pro/
+!wp-content/plugins/backupbuddy/
+!wp-content/plugins/gravityforms/
+!wp-content/plugins/bytelaunch-product-compare/
+
+
+
+# Composer
+/vendor/
+
+#
+#  COMMON
+#
+
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Packages #
+############
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Logs and databases #
+######################
+*.log
+*.sql
+*.sqlite
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
