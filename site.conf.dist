@@ -1,0 +1,40 @@
+# Git
+# ----
+
+git_repo="https://github.com/bytelaunch/ninja-wordpress.git"
+git_branch="develop"
+
+
+# Database Config
+# ----------------
+
+db_host="127.0.0.1"
+db_user="dbuser"
+db_pass="sunshine"
+db_name="wptest"
+
+
+# WordPress
+# ----------
+
+wp_core_version="4.5"
+
+# Prepare a list of plugins to install
+# `ls wp-content/plugins`
+
+wp_plugins="gravityforms uber-login-logo gravity-forms-placeholder-support-add-on wordpress-importer admin-menu-editor wordpress-seo advanced-custom-fields-pro lh-add-media-from-url wp-migrate-db-pro backupbuddy modern-events-calendar wp-migrate-db-pro-cli careers regenerate-thumbnails wp-migrate-db-pro-media-files custom-post-type-ui revslider wp-user-avatar duplicate-post simple-custom-post-order external-media simple-image-sizes"
+
+
+# WP Migrate Pro
+# ---------------
+
+migratedb_license="MIGRATEDBLICENSE"
+
+migratedb_pull="https://www.ninja.com PULLKEY"
+
+migratedb_find="//www.ninja.com"
+migratedb_replace="//dev.ninka.com"
+
+
+migratedb_flags="--skip-replace-guids --preserve-active-plugins"
+# migratedb_flags="--skip-replace-guids --preserve-active-plugins --backup=prefix --media=remove-and-copy"
