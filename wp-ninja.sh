@@ -5,21 +5,106 @@ set -e
 
 RED='\033[1;31m'
 GREY='\033[1;30m'
+GREEN='\033[92m'
 WHITE='\033[1;37m'
 NC='\033[0m' # No Color
-. "./$1"
+BLINK='\033[5m'
+NORMAL='\033[25m'
 
-cd $2
+PR_COM_ERR=0
+PR_FS_ERR=0
+
 
 
 comment() {
 	echo -e "${WHITE}$1${NC}"
+}
+error() {
+	echo -e "${RED}(error)${NC} $1"
+	echo ""
 }
 do_command() {
 	echo -e "${RED}→  ${GREY}$1${NC}"
 	echo ""
 	eval $1
 }
+
+check_command() {
+	if type "$1" &> /dev/null ; then
+		echo -e "    [${GREEN}✓${NC}] Checking \`$1\`. Installed. "
+	else
+		echo -e "    [${RED}x${NC}] Checking \`$1\`. Not found ${RED}!!!${NC} - Get it at $2"
+		PR_COM_ERR=1
+	fi
+}
+
+check_fs() {
+	if [ $1 == "file" ] ; then
+			if [ -f $2 ] ; then
+				echo -e "    [${GREEN}✓${NC}] $3\`$2\` -- Found."
+			else
+				echo -e "    [${RED}x${NC}] $3\`$2\` -- Not Found ${RED}!!!${NC}"
+				PR_FS_ERR=1
+			fi
+	else
+			if [ -d $2 ] ; then
+				echo -e "    [${GREEN}✓${NC}] $3\`$2\` -- Found."
+			else
+				echo -e "    [${RED}x${NC}] $3\`$2\` -- Not Fosund ${RED}!!!${NC}"
+				PR_FS_ERR=1
+			fi
+	fi
+}
+check_file() {
+	check_fs "file" $1 $2
+}
+
+check_dir() {
+	check_fs "dir" $1 $2
+}
+
+check_abort() {
+	if [ $1 -eq 1 ] ; then
+		echo -e "\n${RED}Aborting...${NC}\n" && exit 1
+	else
+		echo -e "\n${GREEN}Passed.${NC}\n"
+	fi
+}
+
+
+test_file() {
+	[ -f $1 ] &> /dev/null
+}
+
+comment
+comment "# TEST PRE-REQUISITES"
+comment "# ===================="
+comment
+
+comment
+comment "# Testing availability of 3rd party applications"
+comment "# -----------------------------------------------"
+comment
+
+check_command git "https://git-scm.com/book/en/v2/Getting-Started-Installing-Git"
+check_command composer "https://getcomposer.org/download/"
+check_command wp "http://wp-cli.org/"
+
+check_abort $PR_COM_ERR
+
+comment
+comment "# Testing config file and destination directory"
+comment "# ----------------------------------------------"
+comment
+
+check_file $1 "Ninja config file: "
+check_dir $2 $(printf 'Checking settings file: %s' "$2")
+
+check_abort $PR_FS_ERR
+
+. "./$1"
+
+cd $2
 
 comment
 comment "# STEP 1. CHECKOUT REPO";
@@ -94,4 +179,3 @@ comment
 comment "# Fetch db from source"
 do_command "wp migratedb pull $migratedb_pull --find=$migratedb_find --replace=$migratedb_replace $migratedb_flags"
 comment
-
